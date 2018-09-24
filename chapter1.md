@@ -146,35 +146,6 @@ xp: 100
 ***
 
 ```yaml
-type: NormalExercise
-key: 6116ba5abe
-xp: 35
-```
-
-`@instructions`
-
-
-`@hint`
-
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-
-```
-
-`@sct`
-```{python}
-
-```
-
-***
-
-```yaml
 type: MultipleChoiceExercise
 key: 56c664402a
 xp: 35
@@ -217,6 +188,56 @@ xp: 30
 ```{python}
 
 ```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: 6116ba5abe
+xp: 35
+```
+
+`@instructions`
+
+
+`@hint`
+
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: MultipleChoiceExercise
+key: ea04996ef0
+```
+
+`@question`
+
+
+`@possible_answers`
+
+
+`@hint`
+
 
 `@sct`
 ```{python}
