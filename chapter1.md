@@ -244,6 +244,27 @@ key: ea04996ef0
 
 ```
 
+***
+
+```yaml
+type: MultipleChoiceExercise
+key: f4242b06a5
+```
+
+`@question`
+lknlk
+
+`@possible_answers`
+
+
+`@hint`
+
+
+`@sct`
+```{python}
+
+```
+
 ---
 
 ## Insert exercise title here
