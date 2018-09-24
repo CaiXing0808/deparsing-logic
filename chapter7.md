@@ -1,46 +1,54 @@
 ---
-title: Laws of probability
-description: >-
-  In this chapter you'll learn to combine multiple probabilities, such as the
-  probability two events both happen or that at least one happens, and confirm
-  each with random simulations. You'll also learn some of the properties of
-  adding and multiplying random variables.
+title: 'Laws of probability'
+description: 'In this chapter you''ll learn to combine multiple probabilities, such as the probability two events both happen or that at least one happens, and confirm each with random simulations. You''ll also learn some of the properties of adding and multiplying random variables.'
 attachments:
-    slides_link: https://s3.amazonaws.com/assets.datacamp.com/production/course_2351/slides/chapter2.pdf
---- type:VideoExercise lang:r xp:50 skills:1 key:e9212c0063
+    slides_link: 'https://s3.amazonaws.com/assets.datacamp.com/production/course_2351/slides/chapter2.pdf'
+---
+
 ## Probability of event A and event B
 
-*** =video_link
-//player.vimeo.com/video/154783078
+```yaml
+type: VideoExercise
+key: e9212c0063
+lang: r
+xp: 50
+skills: 1
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
+```
 
-*** =video_hls
-//videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
-
-*** =projector_key
+`@projector_key`
 d451bf1d19260503164eecc485a44707
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f69cf68e2f
+---
+
 ## Solving for probability of A and B
+
+```yaml
+type: MultipleChoiceExercise
+key: f69cf68e2f
+lang: r
+xp: 50
+skills: 1
+```
 
 If events A and B are independent, and A has a 40% chance of happening, and event B has a 20% chance of happening, what is the probability they will both happen?
 
-*** =instructions
-
+`@possible_answers`
 - 8%
 - 12%
 - 20%
 - 60%
 
-*** =hint
-
+`@hint`
 To find the probability independent events A and B both happen, multiply their probabilities.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg <- "Not exactly. How do you calculate the probability that two independent events both occur?"
 test_mc(1,
@@ -48,29 +56,34 @@ test_mc(1,
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:10ef181aa5
+---
+
 ## Simulating the probability of A and B
 
-You can also use simulation to estimate the probability of two events both happening. 
+```yaml
+type: NormalExercise
+key: 10ef181aa5
+lang: r
+xp: 100
+skills: 1
+```
 
-*** =instructions
+You can also use simulation to estimate the probability of two events both happening.
 
-
+`@instructions`
 * Randomly simulate 100,000 flips of coin A, each of which has a 40% chance of being heads. Save this as a variable `A`.
 * Randomly simulate 100,000 flips of coin B, each of which has a 20% chance of being heads. Save this as a variable `B`.
 * Use the "and" operator (`&`) to combine the variables `A` and `B` to estimate the probability that both A and B are heads.
 
-
-*** =hint
-
+`@hint`
 After combining the simulated vectors `A & B`, you can use `mean` to find the fraction where they are both true.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Simulate 100,000 flips of a coin with a 40% chance of heads
 A <- 
@@ -82,7 +95,7 @@ B <-
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Simulate 100,000 flips of a coin with a 40% chance of heads
 A <- rbinom(100000, 1, .4)
@@ -94,7 +107,7 @@ B <- rbinom(100000, 1, .2)
 mean(A & B)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", 1, args = c("n", "size", "prob"), incorrect_msg = "Check your first `rbinom()` call.")
 
@@ -108,26 +121,33 @@ success_msg("You're a whiz at this simulation stuff!")
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b7781e3bcf
+---
+
 ## Simulating the probability of A, B, and C
+
+```yaml
+type: NormalExercise
+key: b7781e3bcf
+lang: r
+xp: 100
+skills: 1
+```
 
 Randomly simulate 100,000 flips of A (40% chance), B (20% chance), and C (70% chance). What fraction of the time do all three coins come up heads?
 
-*** =instructions
-
+`@instructions`
 - You've already simulated A and B. Now simulate 100,000 flips of coin C, where each has a 70% chance of coming up heads.
 - Use `A`, `B`, and `C` to estimate the probability that all three coins would come up heads.
 
-*** =hint
-
+`@hint`
 You can compute `A & B & C` instead of just `A & B`, using `mean()` to find the fraction where all three are true.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # You've already simulated 100,000 flips of coins A and B
 A <- rbinom(100000, 1, .4)
@@ -140,7 +160,7 @@ B <- rbinom(100000, 1, .2)
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # You've already simulated 100,000 flips of coins A and B
 A <- rbinom(100000, 1, .4)
@@ -153,7 +173,7 @@ C <- rbinom(100000, 1, .7)
 mean(A & B & C)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg <- "Check your %s call of `rbinom()`."
 
@@ -175,67 +195,85 @@ test_error()
 success_msg("Great job! That was much easier than using a nasty formula.")
 ```
 
---- type:VideoExercise lang:r xp:50 skills:1 key:c3bcd571cd
+---
+
 ## Probability of A or B
 
-*** =video_link
-//player.vimeo.com/video/154783078
+```yaml
+type: VideoExercise
+key: c3bcd571cd
+lang: r
+xp: 50
+skills: 1
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
+```
 
-*** =video_hls
-//videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
-
-*** =projector_key
+`@projector_key`
 4c8715a274e1cb0151bdda37c4203448
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:66d3fde0a4
+---
+
 ## Solving for probability of A or B
+
+```yaml
+type: MultipleChoiceExercise
+key: 66d3fde0a4
+lang: r
+xp: 50
+skills: 1
+```
 
 If coins A and B are independent, and A has a 60% chance of coming up heads, and event B has a 10% chance of coming up heads, what is the probability either A or B will come up heads?
 
-*** =instructions
-
+`@possible_answers`
 - 6%
 - 50%
 - 64%
 - 70%
 
-*** =hint
-
+`@hint`
 Recall that the probability of A or B happening (when A and B are independent, as they are here) is P(A) + P(B) - P(A) * P(B).
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg <- "Remember the formula $Pr(A | B) = Pr(A) + Pr(B) - Pr(A \\text{ and } B)$"
 test_mc(3, feedback_msgs = c(msg, msg, "That's right, great job!", msg))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:7c4c5361ba
+---
+
 ## Simulating probability of A or B
+
+```yaml
+type: NormalExercise
+key: 7c4c5361ba
+lang: r
+xp: 100
+skills: 1
+```
 
 In the last multiple choice exercise you found that there was a 64% chance that either coin A (60% chance) or coin B (10% chance) would come up heads. Now you'll confirm that answer using simulation.
 
-*** =instructions
-
+`@instructions`
 - Use `rbinom()` to simulate 100,000 flips of coin A, each having a 60% chance of being heads.
 - Use `rbinom()` to simulate 100,000 flips of coin B, each having a 10% chance of being heads.
 - Use these to estimate the probability that A or B is heads.
 
-*** =hint
-
+`@hint`
 This is similar to the exercise where you estimated the probability of both A and B happening, except you'll use `|` ("or") instead of `&` ("and") to combine A and B.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-
-*** =sample_code
+`@sample_code`
 ```{r}
 # Simulate 100,000 flips of a coin with a 60% chance of heads
 A <- 
@@ -247,7 +285,7 @@ B <-
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Simulate 100,000 flips of a coin with a 60% chance of heads
 A <- rbinom(100000, 1, .6)
@@ -259,7 +297,7 @@ B <- rbinom(100000, 1, .1)
 mean(A | B)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", 1, args = c("n", "size", "prob"), incorrect_msg = "Check your first `rbinom()` call.")
 
@@ -273,30 +311,37 @@ test_function("mean", args = "x", incorrect_msg = "Use the `mean()` function to 
 success_msg("Great work! How does the simulated probability compare to the one you calculated in the last exercise?")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:e4532be4c0
+---
+
 ## Probability either variable is less than or equal to 4
+
+```yaml
+type: NormalExercise
+key: e4532be4c0
+lang: r
+xp: 100
+skills: 1
+```
 
 Suppose X is a random Binom(10, .6) variable (10 flips of a coin with 60% chance of heads) and Y is a random Binom(10, .7) variable (10 flips of a coin with a 70% chance of heads), and they are independent.
 
 What is the probability that either of the variables is less than or equal to 4?
 
-*** =instructions
-
+`@instructions`
 - Simulate 100,000 draws from each of X (10 coins, 60% chance of heads) and Y (10 coins, 70% chance of heads) binomial variables, saving them as `X` and `Y` respectively.
 - Use these simulations to estimate the probability that either X or Y is less than or equal to 4.
 - Use the `pbinom()` function to calculate the exact probability that X is less than or equal to 4, then the probability that Y is less than or equal to 4.
 - Combine these two exact probabilities to calculate the exact probability that either variable is less than or equal to 4.
 
-*** =hint
-
+`@hint`
 Recall that the probability of events A or B is P(A) + P(B) - P(A) * P(B). You can use the probability X <= 4 as P(A) and the probability Y <= 4 as P(B).
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Use rbinom to simulate 100,000 draws from each of X and Y
 X <- 
@@ -313,7 +358,7 @@ prob_Y_less <-
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Use rbinom to simulate 100,000 draws from each of X and Y
 X <- rbinom(100000, 10, .6)
@@ -330,7 +375,7 @@ prob_Y_less <- pbinom(4, 10, .7)
 prob_X_less + prob_Y_less - prob_X_less * prob_Y_less
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", 1, args = c("n", "size", "prob"), incorrect_msg = "Check your first `rbinom()` call.")
 test_function("rbinom", 2, args = c("n", "size", "prob"), incorrect_msg = "Check your second `rbinom()` call.")
@@ -351,65 +396,85 @@ test_output_contains("prob_X_less + prob_Y_less - prob_X_less * prob_Y_less", in
 success_msg("Awesome! Simulation is a great way of avoiding difficult calculations.")
 ```
 
---- type:VideoExercise lang:r xp:50 skills:1 key:d878209f6b
+---
+
 ## Multiplying random variables
 
-*** =video_link
-//player.vimeo.com/video/154783078
+```yaml
+type: VideoExercise
+key: d878209f6b
+lang: r
+xp: 50
+skills: 1
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
+```
 
-*** =video_hls
-//videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
-
-*** =projector_key
+`@projector_key`
 a2ca2fe57b1b1d94cce3bd42e76b7bc5
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e4bbf0c82c
+---
+
 ## Expected value of multiplying a random variable
+
+```yaml
+type: MultipleChoiceExercise
+key: e4bbf0c82c
+lang: r
+xp: 50
+skills: 1
+```
 
 If X is a binomial with size 50 and p = .4, what is the expected value of 3*X?
 
-*** =instructions
-
+`@possible_answers`
 - 1.2
 - 20
 - 60
 - 150
 
-*** =hint
-
+`@hint`
 The expected value of a binomial is size * p, and the expected value of k * X is k * E[X].
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 msg <- "Don't forget that $E[k \\cdot X] = k \\cdot E[x].$"
 test_mc(3, feedback_msgs = c(msg, msg, "Great, you got it!", msg))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:20220f7b46
+---
+
 ## Simulating multiplying a random variable
+
+```yaml
+type: NormalExercise
+key: 20220f7b46
+lang: r
+xp: 100
+skills: 1
+```
 
 In this exercise you'll use simulation to confirm the rule you just learned about how multiplying a random variable by a constant effects its expected value.
 
-*** =instructions
+`@instructions`
 - Simulate 100,000 draws of X, a binomial random variable with size 20 and p = .1. Save this as `X`
 - Use this simulation to estimate the expected value of X.
 - Use this simulation to estimate the expected value of 5*X, as well.
 
-*** =hint
-
+`@hint`
 You can find the expected value of X with `mean(X)`, and by changing `X` to `5 * X` you can find that expected value as well.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Simulate 100,000 draws of a binomial with size 20 and p = .1
 X <- ___
@@ -421,7 +486,7 @@ X <- ___
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Simulate 100,000 draws of a binomial with size 20 and p = .1
 X <- rbinom(100000, 20, .1)
@@ -433,7 +498,7 @@ mean(X)
 mean(5 * X)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", args = c("n", "size", "prob"), incorrect_msg = "Double check your call to `rbinom()`.")
 test_object("X", incorrect_msg = "Did you save the results of you simulation as the variable `X`?")
@@ -445,27 +510,34 @@ test_function("mean", 2, args = "x", incorrect_msg = "Use the `mean()` function 
 success_msg("Fantastic! You're a pro at this simulation stuff!")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ddec8f1ed8
+---
+
 ## Variance of a multiplied random variable
+
+```yaml
+type: NormalExercise
+key: ddec8f1ed8
+lang: r
+xp: 100
+skills: 1
+```
 
 In the last exercise you simulated X from a binomial with size 20 and p = .1 and now you'll use this same simulation to explore the variance.
 
-*** =instructions
-
+`@instructions`
 - Use this simulation to estimate the variance of X.
 
 - Estimate the variance of 5 * X
 
-*** =hint
-
+`@hint`
 Use `var()` to find the variance of each simulated variable.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # X is simulated from 100,000 draws of a binomial with size 20 and p = .1
 X <- rbinom(100000, 20, .1)
@@ -476,7 +548,7 @@ X <- rbinom(100000, 20, .1)
 # Estimate the variance of 5 * X
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # X is simulated from 100,000 draws of a binomial with size 20 and p = .1
 X <- rbinom(100000, 20, .1)
@@ -488,7 +560,7 @@ var(X)
 var(5 * X)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", args = c("n", "size", "prob"), incorrect_msg = "Double check your call to `rbinom()`.")
 test_object("X", incorrect_msg = "Did you save the results of you simulation as the variable `X`?")
@@ -500,40 +572,52 @@ test_function("var", 2, args = "x", incorrect_msg = "Use the `var()` function to
 success_msg("Stellar work! How does the variance compare to the mean?")
 ```
 
---- type:VideoExercise lang:r xp:50 skills:1 key:85636a04d3
+---
+
 ## Adding two random variables
 
-*** =video_link
-//player.vimeo.com/video/154783078
+```yaml
+type: VideoExercise
+key: 85636a04d3
+lang: r
+xp: 50
+skills: 1
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
+```
 
-*** =video_hls
-//videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
-
-*** =projector_key
+`@projector_key`
 03d6a6937a3219af4d73f6ffd2277b40
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d49c4279bd
+---
+
 ## Solving for the sum of two binomial variables
+
+```yaml
+type: MultipleChoiceExercise
+key: d49c4279bd
+lang: r
+xp: 50
+skills: 1
+```
 
 If X is drawn from a binomial with size 20 and p = .3, and Y from size 40 and p = .1, what is the expected value (mean) of X + Y?
 
-*** =instructions
-
+`@possible_answers`
 - 4
 - 6
 - 10
 - 60
 
-*** =hint
-
+`@hint`
 Compute the expected value of X and the expected value of Y separately, then add them together.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_mc(3, feedback_msgs = c("That's the expected value of Y",
                              "That's the expected value of X",
@@ -541,26 +625,33 @@ test_mc(3, feedback_msgs = c("That's the expected value of Y",
                              "Double check your calculation."))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:08d706e3fc
+---
+
 ## Simulating adding two binomial variables
+
+```yaml
+type: NormalExercise
+key: 08d706e3fc
+lang: r
+xp: 100
+skills: 1
+```
 
 In the last multiple choice exercise, you found the expected value of the sum of two binomials. In this problem you'll use a simulation to confirm your answer.
 
-*** =instructions
-
+`@instructions`
 - Simulate 100,000 draws from X, a binomial with size 20 and p = .3, and Y, with size 40 and p = .1.
 - Use this simulation to estimate the expected value of X + Y.
 
-*** =hint
-
+`@hint`
 You can take the mean of `X + Y` to find the expected value of the sum.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Simulate 100,000 draws of X (size 20, p = .3) and Y (size 40, p = .1)
 X <-
@@ -570,7 +661,7 @@ Y <-
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Simulate 100,000 draws of X (size 20, p = .3) and Y (size 40, p = .1)
 X <- rbinom(100000, 20, .3) 
@@ -580,7 +671,7 @@ Y <- rbinom(100000, 40, .1)
 mean(X + Y)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", 1, args = c("n", "size", "prob"), incorrect_msg = "Double check your first call of `rbinom()`.")
 test_function("rbinom", 2, args = c("n", "size", "prob"), incorrect_msg = "Double check your second call of `rbinom()`.")
@@ -607,26 +698,33 @@ success_msg("Great job! The fact that you can add the means makes stuff much sim
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b5c35d8632
+---
+
 ## Simulating variance of sum of two binomial variables
+
+```yaml
+type: NormalExercise
+key: b5c35d8632
+lang: r
+xp: 100
+skills: 1
+```
 
 In the last multiple choice exercise, you examined the expected value of the sum of two binomials. Here you'll estimate the variance.
 
-*** =instructions
-
+`@instructions`
 - Use your simulation of the variables X and Y to estimate the variance of `X + Y`.
 - Use your simulation to estimate the variance of `3 * X + Y`.
 
-*** =hint
-
+`@hint`
 You can find the variance of X + Y with `var(X + Y)`, and can change that formula to find the second variance.
 
-*** =pre_exercise_code
+`@pre_exercise_code`
 ```{r}
 set.seed(2017)
 ```
 
-*** =sample_code
+`@sample_code`
 ```{r}
 # Simulation from last exercise of 100,000 draws from X and Y
 X <- rbinom(100000, 20, .3) 
@@ -639,7 +737,7 @@ Y <- rbinom(100000, 40, .1)
 
 ```
 
-*** =solution
+`@solution`
 ```{r}
 # Simulation from last exercise of 100,000 draws from X and Y
 X <- rbinom(100000, 20, .3) 
@@ -652,7 +750,7 @@ var(X + Y)
 var(3 * X + Y)
 ```
 
-*** =sct
+`@sct`
 ```{r}
 test_function("rbinom", 1, args = c("n", "size", "prob"), incorrect_msg = "Double check your first call of `rbinom()`.")
 test_function("rbinom", 2, args = c("n", "size", "prob"), incorrect_msg = "Double check your second call of `rbinom()`.")
