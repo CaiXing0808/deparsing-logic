@@ -1,19 +1,18 @@
 ---
-title: "Functions and Control Flow"
-description: "Initiation to C++ functions. There is no C++ console as in R, so the function is the most basic building block we'll use. "
-
+title: 'Functions and Control Flow'
+description: 'Initiation to C++ functions. There is no C++ console as in R, so the function is the most basic building block we''ll use. '
 ---
 
 ## C++ functions belong to C++ files
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 6f251aa30b
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 6f251aa30b 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
 ```
 
 `@projector_key`
@@ -24,13 +23,12 @@ a4b68f779b0d9fe902a9e96f4ba1ef2f
 ## What happens when you compile this c++ file
 
 ```yaml
-type: MultipleChoiceExercise 
+type: MultipleChoiceExercise
+key: 6cf7e51442
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 6cf7e51442   
 ```
-
 
 Read the following C++ code chunk.
 
@@ -45,8 +43,7 @@ double twice(double x){
 
 This has been saved in a file given by the variable `twice_file`. What will happen if you compile this file with `sourceCpp()`?
 
-
-`@instructions`
+`@possible_answers`
 - The file compiles.
 - The function, `twice()`, is exported to R.
 - A compiler error is thrown.
@@ -54,9 +51,7 @@ This has been saved in a file given by the variable `twice_file`. What will happ
 `@hint`
 Call `sourceCpp(twice_file)` to find out!
 
-
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 twice_file <- file.path(tempdir(), "twice.cpp")
@@ -72,7 +67,6 @@ double twice(double x){
 ```
 
 `@sct`
-
 ```{r}
 msg1 <- "Unfortunately not. Can you see a problem with the file?"
 msg2 <- "No. An export was not declared with `[[Rcpp::export]]`."
@@ -87,11 +81,11 @@ ex() %>% check_mc(
 ## Boiler plate
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: f1d43acd13
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: f1d43acd13   
 ```
 
 As you saw in the previous exercise, the code below does not compile. 
@@ -108,25 +102,20 @@ double twice(double x){
 
 Let's modify it.
 
-
 `@instructions`
 - Fix the syntax error on the function's return line.
 - Add an `[[Rcpp::export]]` decorator so that the function is exported to R.
 
 `@hint`
-
 - In C++ statements end with semi colons. 
 - Add the line `// [[Rcpp::export]]` before the function definition.
 
-
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp ; 
@@ -140,7 +129,6 @@ double twice(double x) {
 ```
 
 `@solution`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp ; 
@@ -154,7 +142,6 @@ double twice(double x) {
 ```
 
 `@sct`
-
 ```{r}
 
 library(testwhat.ext)
@@ -172,27 +159,28 @@ success_msg("First-class fixing! You need to add the `[[Rcpp::export]]` decorato
 ## Writing functions in C++
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 0a6485c96f
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 0a6485c96f 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
 ```
 
 `@projector_key`
 add19cbafc1b542ea1071a1a3e75f538
+
 ---
 
 ## First function - again
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 5ceda676b8
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 5ceda676b8   
 ```
 
 Recall the `the_answer()` function from Chapter 1, that always returns `42`. Let's rewrite it, this time in a C++ file.
@@ -205,30 +193,24 @@ The file's components are:
 1. The function definition.
 1. An Rcpp R comment block, to call the function once the C++ code is compiled.
 
-
 `@instructions`
-
 - Include the `Rcpp.h` header file.
 - Declare that you use the Rcpp namespace.
 - Make the function return `42`.
 - In the Rcpp R comment block, call the function.
 
-`@pre_exercise_code`
-
-```{r}
-library(Rcpp)
-```
-
 `@hint`
-
 - To include `Rcpp.h`, write it without quotes inside the angle brackets.
 - The syntax to declare the `std` namespace is `using namespace std;`. Adapt this for `Rcpp`.
 - Remember the semicolons at the end of each line!
 - Call `the_answer()` without any arguments.
 
+`@pre_exercise_code`
+```{r}
+library(Rcpp)
+```
 
 `@sample_code`
-
 ```{cpp}
 // Include the Rcpp.h header
 #include <___>
@@ -249,7 +231,6 @@ ___
 ```
 
 `@solution`
-
 ```{cpp}
 // Include the Rcpp.h header
 #include <Rcpp.h>
@@ -270,7 +251,6 @@ the_answer()
 ```
 
 `@sct`
-
 ```{r}
 
 library(testwhat.ext)
@@ -293,13 +273,12 @@ success_msg("Wonderfully written! This code pattern of include Rcpp, use the nam
 ## Exported and unexported functions
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 6ae975ec02
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 6ae975ec02   
 ```
-
 
 Functions that are decorated with the `[[Rcpp::export]]` special comment are made available to the R console. However, you typically don't want to export every function to R. Instead, some functions can be kept internal to C++. These are often lower-level calculation functions or utility functions.
 
@@ -314,25 +293,21 @@ double dist( double x, double y) {
 Here, you'll update the code so that the `dist` function (that is exported) calls an unexported `square` function that just squares a `double`.
 
 `@instructions`
-
 - Complete the definition of `square()` so that it accepts and returns a `double`, ...
 - that is equal to `x` times `x`.
 - Update the definition of `dist()` to use `square()`. That is, to return the square of `x` plus the square of `y`.
 
 `@hint`
-
 - The signature line for `square()` should be `double square(double x) {`.
 - The return value for `square()` is `x * x`.
 - The updated return value of `dist()` is `square(x)` plus `square(y)`, all square-rooted with `sqrt()`.
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp; 
@@ -350,7 +325,6 @@ double dist(double x, double y) {
 ```
 
 `@solution`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp; 
@@ -370,7 +344,6 @@ double dist(double x, double y) {
 ```
 
 `@sct`
-
 ```{r}
 success_msg("Radical refactoring! Code written as many small functions is usually easier to maintain and debug, compared to having one gigantic function.")
 ```
@@ -380,11 +353,11 @@ success_msg("Radical refactoring! Code written as many small functions is usuall
 ## R code in C++ files
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 6a41ea884e
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 6a41ea884e   
 ```
 
 When you compile your C++ file with `sourceCpp()` (or the "Source" button in RStudio), `Rcpp` compiles your code and makes the exported 
@@ -403,24 +376,20 @@ This is particularly useful when you are developing your code because you can ve
 You will use these special comments throughout the rest of this course.
 
 `@instructions`
-
 - Start an Rcpp R comment block with `/*** R`.
 - Call the `dist` function to calculate the distance from the origin to the `(3,4)` point.
 - Close the Rcpp R comment block with `*/`.
 
 `@hint`
-
 - The block begins with `/*** R` and ends with `*/`, each on its own line.
 - Call `dist(3, 4)` to calculate the distance.
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp; 
@@ -443,7 +412,6 @@ ___
 ```
 
 `@solution`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp; 
@@ -466,7 +434,6 @@ disty(3, 4)
 ```
 
 `@sct`
-
 ```{r}
 success_msg("Awesome R-in-C++-file action! These comment blocks are also handy when you want to share your code as a single file, for example as a [GitHub gist](https://help.github.com/articles/about-gists).")
 ```
@@ -476,13 +443,12 @@ success_msg("Awesome R-in-C++-file action! These comment blocks are also handy w
 ## if and if/else
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: fef3d40537
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: fef3d40537   
 ```
-
 
 Just like in R, you can use the `if` and `else` keywords for branching. The syntax is the same as in R.
 
@@ -497,27 +463,23 @@ if(condition) {
 Here you'll use `if` and `else` to complete the definition of an `absolute()` function to calculate the absolute value of a floating point number. (This mimics the C++ function [`fabs()`](http://www.cplusplus.com/reference/cmath/fabs).)
 
 `@instructions`
-
 - Test if x is greater than zero.
 - If the condition holds, return `x`.
 - Add the keyword for what to do otherwise.
 - If the condition doesn't hold, return negative `x`.
 
 `@hint`
-
 - Call `if()` with condition `x > 0`.
 - Remember the semicolon when returning `x`.
 - The keyword for the "otherwise" case is `else`.
 - The second return value is `-x`.
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp ;
@@ -542,7 +504,6 @@ absolute(-3)
 ```
 
 `@solution`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp ;
@@ -567,7 +528,6 @@ absolute(-3)
 ```
 
 `@sct`
-
 ```{r}
 success_msg('Absolutely fabulous! Branching your code using if-else is sometimes called "flow control".')
 ```
@@ -577,27 +537,28 @@ success_msg('Absolutely fabulous! Branching your code using if-else is sometimes
 ## For loops
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: d521511b2d
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: d521511b2d 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
 ```
 
 `@projector_key`
 2b5067806e451827d2278708f17763d4
+
 ---
 
 ## Calculating square roots with a for loop
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 99391205b5
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 99391205b5   
 ```
 
 Just as in R, C++ for loops run the same code a specified number of times, only changing an index value on each iteration. The syntax for a `for` loop is slightly more complex than R though.
@@ -616,9 +577,7 @@ Here you'll complete the definition of a function for calculating the square-roo
 
 ![](https://assets.datacamp.com/production/repositories/820/datasets/29d7493c34f1f40f51621773b4d483f2590ca635/xn.png)
 
-
 `@instructions`
-
 - Initialize a local `double` x to one.
 - Specify a `for` loop.
     - Initialize an integer, `i`, to `0`.
@@ -626,19 +585,15 @@ Here you'll complete the definition of a function for calculating the square-roo
     - Increment `i` by one on each step.
 
 `@hint`
-
 - `x` is a `double`, so you need to include a decimal point.
 - The arguments to the `for` loop are `int i = 0`, `i < n`, and `i++`.
 
-
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -660,7 +615,6 @@ sqrt_approx(2, 10)
 ```
 
 `@solution`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -682,7 +636,6 @@ sqrt_approx(2, 10)
 ```
 
 `@sct`
-
 ```{r}
 success_msg("Formidable for-looping! The `++` operator is a useful shortcut for increasing the value of a variable by one.")
 ```
@@ -692,11 +645,11 @@ success_msg("Formidable for-looping! The `++` operator is a useful shortcut for 
 ## Breaking out of a for loop
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 6b7687344d
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 6b7687344d   
 ```
 
 Sometimes you may wish to exit a loop before you've completed all the iterations. For example, your code may succeed in its task before all possibilities have been tried. The `break` keyword can be used to break out of a loop early. 
@@ -716,24 +669,19 @@ for(int i = 0; i < n; i++) {
 
 Here you'll rework the previous example so that the loop stops when the value does not change too much (based on a threshold). The function has been modified so that it returns a `List`, enabling you to see the approximation at each iteration.
 
-
 `@instructions`
-
-Add a break condition that triggers if the solution is good enough. 
+Add a break condition that triggers if the solution is good enough.
 
 `@hint`
-
 - Call `if()`, with condition `is_good_enough`.
 - If that condition is true, call `break`.
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -761,7 +709,6 @@ sqrt_approx(2, 1000, 0.1)
 ```
 
 `@solution`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -789,7 +736,6 @@ sqrt_approx(2, 1000, 0.1)
 ```
 
 `@sct`
-
 ```{r}
 success_msg("Breathtaking breaking! Using `break` meant that the loop did not have to execute all 1000 iterations of the for loop.")
 ```
@@ -799,27 +745,28 @@ success_msg("Breathtaking breaking! Using `break` meant that the loop did not ha
 ## While loops
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 4a286ec63a
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 4a286ec63a 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/000_placeholders/v1/hls-temp.master.m3u8
 ```
 
 `@projector_key`
 98301ac86c045abd60e4f420917459c7
+
 ---
 
 ## Calculating square roots with a while loop
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: c3957497a6
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: c3957497a6   
 ```
 
 While loops keep running iterations until a condition is no longer met. The sytnax for a C++ while loop is the same is in R.
@@ -831,22 +778,17 @@ while(condition) {
 ```
 
 `@instructions`
-
 Specify the while loop, so it keeps iterating while the value `is_good_enough` is false.
 
-
 `@hint`
-
 `!` is the C++ not operator (same as in R).
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -873,7 +815,6 @@ sqrt_approx(2, 0.00001)
 ```
 
 `@solution`
-
 ```{cpp}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -900,7 +841,6 @@ sqrt_approx(2, 0.00001)
 ```
 
 `@sct`
-
 ```{r}
 success_msg("Wonderful while looping! Notice that using a while loop let you avoid having to specify the number of iterations beforehand.")
 ```
@@ -910,11 +850,11 @@ success_msg("Wonderful while looping! Notice that using a while loop let you avo
 ## Do it again: do-while loops
 
 ```yaml
-type: RCppExercise 
+type: RCppExercise
+key: 434e2cfe50
 lang: r
-xp: 0 
+xp: 100
 skills: 1
-key: 434e2cfe50   
 ```
 
 <!--`do`/`while` loops shifts the order between the condition and the code. It is 
@@ -932,23 +872,19 @@ do {
 Notice the semicolon after the while condition.
 
 `@instructions`
-
 - Initiate the loop with a `do` statement.
 - Specify the `while` condition, so the loop keeps iterating until it `is_good_enough`.
 
 `@hint`
-
 - The `while` condition clause is *not* `is_good_enough`.
 - Append a semicolon to the while condition.
 
 `@pre_exercise_code`
-
 ```{r}
 library(Rcpp)
 ```
 
 `@sample_code`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -976,7 +912,6 @@ sqrt_approx(2, 0.00001)
 ```
 
 `@solution`
-
 ```{r}
 #include <Rcpp.h>
 using namespace Rcpp;
@@ -1004,7 +939,6 @@ sqrt_approx(2, 0.00001)
 ```
 
 `@sct`
-
 ```{r}
 success_msg("What a doozy! That concludes the tour of the three loop types.")
 ```
