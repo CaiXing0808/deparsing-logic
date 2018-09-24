@@ -1149,7 +1149,7 @@ ex() %>%
 
 ---
 
-## Delay with eventReactive()
+## Delay with eventReactive();
 
 ```yaml
 type: ShinyExercise
