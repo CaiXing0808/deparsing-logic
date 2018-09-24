@@ -8,32 +8,31 @@ attachments:
 ## Reactive elements
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 35a09b66b2
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 35a09b66b2 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_1.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_1.master.m3u8
 ```
 
 `@projector_key`
 ddf3de107f8b786f6aa4427ca9f33059
+
 ---
 
 ## Add reactive data frame
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: a58e6f3449
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: a58e6f3449   
 ```
 
-
 We ended the previous chapter with an app that allows you to download a data file with selected variables from the `movies` dataset. We will now extend this app by adding a table output of the selected data as well. Given that the same dataset will be used in two outputs, it makes sense to make our code more efficient by using a reactive data frame.
-
 
 `@instructions`
 - With the function `reactive()`, define `movies_selected`: a reactive expression that is a data frame with the selected variables (`input$selected_var`).
@@ -49,6 +48,7 @@ library(shiny)
 library(dplyr)
 library(readr)
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -125,6 +125,7 @@ server <- function(input, output) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -201,6 +202,7 @@ server <- function(input, output) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 ex() %>% 
@@ -235,21 +237,20 @@ ex() %>%
 #     check_equal(incorrect_msg = "Your `server` function is wrong. Did you change any of the code that was already given to you?")
 success_msg("Well done!")
 ```
+
 ---
 
 ## Identify reactive objects
 
 ```yaml
-type: PureMultipleChoiceExercise 
+type: PureMultipleChoiceExercise
+key: 9cf8b2a1de
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 9cf8b2a1de   
 ```
 
-
 The `movies_selected()` reactive expression from the video and the previous exercise is a:
-
 
 `@hint`
 Does it have children? Does it have parents? Does it have both?
@@ -271,32 +272,31 @@ Does it have children? Does it have parents? Does it have both?
 ## Using reactives
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: fa4c92468a
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: fa4c92468a 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_2.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_2.master.m3u8
 ```
 
 `@projector_key`
 87953ce7c9c942a840b595d3f7219ecb
+
 ---
 
 ## Find missing reactives
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: d5789137cf
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: d5789137cf   
 ```
 
-
 In the following app code there should be two reactive expressions: `movies_subset` and `pretty_plot_title`. Both of these are used in multiple spots in the app so we would like to define them once, and refer to them multiple times. However the sample code provided does not accomplish this goal. One problem is that some reactive expressions are not being referred to properly. And the other problem is that some reactive expressions are not being defined properly.
-
 
 `@instructions`
 - First make sure that all reactive expressions are being defined properly using `reactive()`.
@@ -315,6 +315,7 @@ library(ggplot2)
 library(dplyr)
 library(tools)
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -417,6 +418,7 @@ server <- function(input, output) {
 # Create the Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -519,6 +521,7 @@ server <- function(input, output) {
 # Create the Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 ex() %>% 
@@ -540,21 +543,20 @@ ex() %>%
 
 success_msg("You're getting the hang of reactives!")
 ```
+
 ---
 
 ## Find inconsistencies in what the app is reporting
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: 5d6d22886d
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 5d6d22886d   
 ```
 
-
 This exercise features an app where the user can select a random sample of desired title types. The app then reports the frequencies of various title types in the sample and plots user selected variables for these data. There are two new functions of note in the server: `observeEvent()` and `updateNumericInput()`. We use them to update the numeric input widget to display a maximum allowed sample size based on the selected title types. For example, if you only select "TV Movie", the maximum allowed sample size is 5, because there are only 5 TV movies in the sample. We'll learn more about `observeEvent()` later in the course. For now, your task is simple: find the mismatched use of reactives.
-
 
 `@instructions`
 - Run the sample code and view the app. (1) Does the sample size the user inputs match the sample size displayed in the text on top of the app? (2) Does it match the counts displayed in the title type frequency table? (3) How about the number of points plotted?
@@ -570,6 +572,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -681,6 +684,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -792,6 +796,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 # i can't find this code anywhere in this exercise: types <- 
@@ -809,39 +814,39 @@ ex() %>%
     check_equal(incorrect_msg = "Your `server` function is wrong. Did you change any of the code that was already given to you?")
 success_msg("Great job!")
 ```
+
 ---
 
 ## Reactives and observers
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 90078af43d
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 90078af43d 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_3.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_3.master.m3u8
 ```
 
 `@projector_key`
 fc400ae9baf780525781777174bc9160
+
 ---
 
 ## Does this have a side effect? (1)
 
 ```yaml
-type: MultipleChoiceExercise 
+type: MultipleChoiceExercise
+key: ececae42bc
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: ececae42bc   
 ```
-
 
 Which of the following does **not** have a side effect?
 
-
-`@instructions`
+`@possible_answers`
 - `value <<- 10`
 - `source("functions.R")`
 - `library(dplyr)`
@@ -854,6 +859,7 @@ Any effect of a function that is not the return value is a side effect.
 ```{r}
 library(shiny)
 ```
+
 `@sct`
 ```{r}
 msg1 <- "This sets a variable in a parent environment"
@@ -862,23 +868,22 @@ msg3 <- "This modifies the global search list"
 msg4 <- "Yup!"
 test_mc(4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
+
 ---
 
 ## Does this have a side effect? (2)
 
 ```yaml
-type: MultipleChoiceExercise 
+type: MultipleChoiceExercise
+key: 2bb7b355a2
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 2bb7b355a2   
 ```
-
 
 Which of the following functions has a side effect?
 
-
-`@instructions`
+`@possible_answers`
 - `function(a, b) { (b - a) / a }`
 - `function(values) { hist(values, plot = TRUE) }`
 - `function() { readLines("~/data/raw.txt") }`
@@ -891,6 +896,7 @@ Any effect of a function that is not the return value is a side effect.
 ```{r}
 library(shiny)
 ```
+
 `@sct`
 ```{r}
 msg1 <- "Most calculations don't have side effects"
@@ -899,39 +905,39 @@ msg3 <- "Reads a file but doesn't save it"
 msg4 <- "Most calculations don't have side effects"
 test_mc(2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
+
 ---
 
 ## Stop - trigger - delay
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 64eabaea12
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 64eabaea12 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_4.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_4.master.m3u8
 ```
 
 `@projector_key`
 c5e688291c7e6571bb03a608498cd5e2
+
 ---
 
 ## Stop with isolate()
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: e15b4412be
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: e15b4412be   
 ```
-
 
 The `isolate()` function takes one argument, `expr`, which is an expression that can access reactive values or expressions. And this function serves a very precise purpose: it executes `expr` in a scope where reactive values or expression can be read, but they do not trigger an output that depends on them to be re-evaluated. However if that output depends on other reactives as well, when one of those changes, the output is re-evaluated with the new value of the isolated `expr`.
 
 In this app we want to isolate the plot title, such that the plot is updated with the new plot title only when other inputs to the plot change.
-
 
 `@instructions`
 - Run the code and test out the functionality of the plot title input. Is the plot title updated immediately after you're done typing the title?
@@ -946,6 +952,7 @@ library(shiny)
 library(ggplot2)
 library(tools)
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -1031,6 +1038,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -1116,6 +1124,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 ex() %>% 
@@ -1137,23 +1146,22 @@ ex() %>%
     check_result() %>% 
     check_equal(incorrect_msg = "Your `server` function is wrong. Did you change any of the code that was already given to you?")
 ```
+
 ---
 
 ## Delay with eventReactive()
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: bd8479db4f
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: bd8479db4f   
 ```
-
 
 In this exercise we introduce an action button that will be used to update the plot title when the button is clicked. This is an example of delaying a reaction (until the button is clicked), which we can accomplish with the `eventReactive()` function.
 
 `eventReactive()` takes two main arguments: The first (`eventExpr`) is what to condition on, and the second (`valueExpr`) is what should happen when the event expression is  happens.
-
 
 `@instructions`
 - In the UI: Add an `actionButton`, with input ID `"update_plot_title"` and label `"Update plot title"` to the UI that will be used to update the title only when the button is clicked.
@@ -1180,6 +1188,7 @@ library(shiny)
 library(ggplot2)
 library(tools)
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -1278,6 +1287,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -1377,6 +1387,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 ex() %>% 
@@ -1415,18 +1426,18 @@ ex() %>%
 #     check_arg(., "ignoreNULL") %>% check_equal()
 # }
 ```
+
 ---
 
 ## Trigger with observeEvent()
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: 84adc94f29
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 84adc94f29   
 ```
-
 
 In this app we want two things to happen when an action button is clicked: 
 
@@ -1434,7 +1445,6 @@ In this app we want two things to happen when an action button is clicked:
 - A table output of those records.
 
 While `observeEvent()` will print a message to the console when the action button is clicked on your local machine, it will not currently work on the DataCamp platform. It is important, however, to learn how to do this for your future Shiny apps!
-
 
 `@instructions`
 - Use `observeEvent()` to print a message to the console when the action button is clicked.
@@ -1451,6 +1461,7 @@ While `observeEvent()` will print a message to the console when the action butto
 library(shiny)
 options("shiny.sanitize.errors" = FALSE) # Turn off error sanitization
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -1502,6 +1513,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -1553,6 +1565,7 @@ server <- function(input, output, session) {
 # Create a Shiny app object
 shinyApp(ui = ui, server = server)
 ```
+
 `@sct`
 ```{r}
 server_body <- ex() %>% 
@@ -1596,25 +1609,24 @@ ex() %>%
     check_result() %>% 
     check_equal(incorrect_msg = "Your `server` function is wrong. Did you change any of the code that was already given to you?")
 ```
+
 ---
 
 ## eventReactive() vs observeEvent()
 
 ```yaml
-type: MultipleChoiceExercise 
+type: MultipleChoiceExercise
+key: 37f9800b98
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 37f9800b98   
 ```
-
 
 Which of the following is false?
 
 See the help for `eventReactive()` and `observeEvent()`, especially the Details section.
 
-
-`@instructions`
+`@possible_answers`
 - `observeEvent()` is used to perform an action in response to an event
 - `isolate()` is used to trigger a reaction
 - `eventReactive()` is used to create a calculated value that only updates in response to an event
@@ -1627,41 +1639,42 @@ See the help documentation for more info on each of these functions.
 ```{r}
 library(shiny)
 ```
+
 `@sct`
 ```{r}
 test_mc(2)
 ```
+
 ---
 
 ## Reactivity recap
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 58817ab0e8
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 58817ab0e8 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_5.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/4850_building_web_apps_in_r_with_shiny/v1/hls-4850_ch3_5.master.m3u8
 ```
 
 `@projector_key`
 8ab9ea795caf064d0e4bc96b7f2df312
+
 ---
 
 ## What's wrong?
 
 ```yaml
-type: ShinyExercise 
+type: ShinyExercise
+key: 2ccaefafe1
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 2ccaefafe1   
 ```
 
-
 This app adds 2 to the value provided by the user via the slider. However, currently it's buggy and not working as intended.
-
 
 `@instructions`
 - Run the sample code provided, and review the error message.
@@ -1676,6 +1689,7 @@ This app adds 2 to the value provided by the user via the slider. However, curre
 library(shiny)
 options("shiny.sanitize.errors" = FALSE) # Turn off error sanitization
 ```
+
 `@sample_code`
 ```{r}
 library(shiny)
@@ -1700,6 +1714,7 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
 `@solution`
 ```{r}
 library(shiny)
@@ -1724,6 +1739,7 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
 `@sct`
 ```{r}
 ex() %>% 
