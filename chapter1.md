@@ -265,6 +265,27 @@ lknlk
 
 ```
 
+***
+
+```yaml
+type: MultipleChoiceExercise
+key: 5b5cfa145e
+```
+
+`@question`
+
+
+`@possible_answers`
+
+
+`@hint`
+
+
+`@sct`
+```{python}
+
+```
+
 ---
 
 ## Insert exercise title here
