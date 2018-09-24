@@ -134,8 +134,6 @@ test_mc(4, feedback_msgs = c(msg1, msg1, msg1, msg2))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_05_my_code.R open
 
-
-
 ---
 
 ## Keyboard shortcuts
@@ -186,8 +184,6 @@ test_mc(3, feedback_msgs = c(msg2, msg2, msg1, msg2))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_07_my_code.R open
 
-
-
 ---
 
 ## Trying new shortcuts
@@ -219,8 +215,6 @@ test_mc(3, feedback_msgs = c(msg2, msg2, msg1))
 
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_08_my_code.R open
-
-
 
 ---
 
@@ -305,8 +299,6 @@ test_mc(2, feedback_msgs = c(msg2, msg1, msg2, msg2))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_13_my_code.R open
 
-
-
 ---
 
 ## Navigate & edit code
@@ -356,8 +348,6 @@ test_mc(3, feedback_msgs = c(msg2, msg2, msg1))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_13_my_code.R open
 
-
-
 ---
 
 ## Closing folds
@@ -389,8 +379,6 @@ test_mc(3, feedback_msgs = c(msg2, msg2, msg1))
 
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_14_my_code.R open
-
-
 
 ---
 
@@ -440,8 +428,6 @@ test_mc(2, feedback_msgs = c(msg2, msg1, msg2, msg2))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_16_my_code.R open
 
-
-
 ---
 
 ## Refreshing your R session
@@ -474,8 +460,6 @@ test_mc(3, feedback_msgs = c(msg2, msg2, msg1, msg2))
 
 `@attachments`
 .RData: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_17_.RData
-
-
 
 ---
 
@@ -524,8 +508,6 @@ test_mc(3, feedback_msgs = c(msg1, msg2, msg3))
 
 `@attachments`
 .RData: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_19_.RData
-
-
 
 ---
 
@@ -577,8 +559,6 @@ test_mc(1, feedback_msgs = c(msg1, msg2, msg2, msg2))
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_21_my_code.R open
 
-
-
 ---
 
 ## Exiting debugger mode
@@ -611,8 +591,6 @@ test_mc(4, feedback_msgs = c(msg2, msg2, msg2, msg1))
 
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_21_my_code.R open
-
-
 
 ---
 
@@ -661,8 +639,6 @@ test_mc(1, feedback_msgs = c(msg1, msg2))
 
 `@attachments`
 my_code.R: https://s3.amazonaws.com/assets.datacamp.com/production/course_944/datasets/ex2_21_my_code.R open
-
-
 
 ---
 
