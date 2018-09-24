@@ -1,41 +1,39 @@
 ---
-  title: "Latin Squares, Graeco-Latin Squares, & Factorial experiments"
-  description: "Evaluate the NYC SAT scores data and deal with its missing values, then evaluate Latin Square, Graeco-Latin Square, and Factorial experiments."
-  attachments: 
-    slides_link: "https://s3.amazonaws.com/assets.datacamp.com/production/course_6572/slides/chapter4.pdf"
+title: 'Latin Squares, Graeco-Latin Squares, & Factorial experiments'
+description: 'Evaluate the NYC SAT scores data and deal with its missing values, then evaluate Latin Square, Graeco-Latin Square, and Factorial experiments.'
+attachments:
+    slides_link: 'https://s3.amazonaws.com/assets.datacamp.com/production/course_6572/slides/chapter4.pdf'
 ---
 
 ## Latin Squares
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: c49fe48335
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: c49fe48335   
 ```
 
 `@projector_key`
 2792266da48acb28a0dea1a572d227fc
+
 ---
 
 ## NYC SAT Scores EDA
 
 ```yaml
-type: BulletExercise 
+type: BulletExercise
+key: b0c8dfe135
 lang: r
-xp: 100 
-key: b0c8dfe135   
+xp: 100
 ```
-
 
 Math is a subject the U.S. is consistently behind the rest of the world on, so our experiments will focus on Math score. While the original dataset is an open dataset downloaded from [Kaggle](https://www.kaggle.com/nycopendata/high-schools/data), throughout this chapter I will add a few variables that will allow you to pretend you are an education researcher conducting experiments ideally aimed at raising students' scores, hopefully increasing the likelihood they will be admitted to colleges.
 
 Before diving into analyzing the experiments, we should do some EDA to make sure we fully understand the `nyc_scores` data. In this lesson, we'll do experiments where we block by `Borough` and `Teacher_Education_Level`, so let's examine math scores by those variables. The `nyc_scores` dataset has been loaded for you.
 
-
 `@pre_exercise_code`
-
 ```{r}
 library(dplyr)
 nyc_scores <- read.csv("https://assets.datacamp.com/production/repositories/1793/datasets/6eee2fcc47c8c8dbb2e9d4670cf2eabeda52b705/nyc_scores.csv")
@@ -46,7 +44,6 @@ nyc_scores$Teacher_Education_Level <- sample(c("College Student", "BA", "Grad St
 ```
 
 `@sample_code`
-
 ```{r}
 # Mean, var, and median of Math score
 nyc_scores %>%
@@ -58,17 +55,11 @@ nyc_scores %>%
 
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 30 
-key: c495c18db1   
+type: NormalExercise
+key: c495c18db1
+xp: 30
 ```
-
-
-
-
 
 `@instructions`
 Find the mean, variance, and median of `Average_Score_SAT_Math` by `Borough` using `dplyr` methods for EDA as we have used them throughout the course.
@@ -76,8 +67,12 @@ Find the mean, variance, and median of `Average_Score_SAT_Math` by `Borough` usi
 `@hint`
 You should use `group_by()` and `summarise()`, in that order.
 
-`@solution`
+`@sample_code`
+```{r}
 
+```
+
+`@solution`
 ```{r}
 # Mean, var, and median of Math score by Borough
 nyc_scores %>%
@@ -88,7 +83,6 @@ nyc_scores %>%
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -97,20 +91,13 @@ ex() %>%
                       missing_msg = "Be sure to use `group_by()` and `summarise()` to find the mean, variance, and median Math score by Borough.")
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 30 
-key: 58fa71b1cd   
+type: NormalExercise
+key: 58fa71b1cd
+xp: 30
 ```
-
-
-
-
 
 `@instructions`
 Find the mean, variance, and median of `Average_Score_SAT_Math` using `dplyr` EDA methods by `Teacher_Education_Level`.
@@ -118,8 +105,12 @@ Find the mean, variance, and median of `Average_Score_SAT_Math` using `dplyr` ED
 `@hint`
 Be sure not to delete the argument `na.rm = TRUE` throughout, or the output in the console will be full of `NA`s.
 
-`@solution`
+`@sample_code`
+```{r}
 
+```
+
+`@solution`
 ```{r}
 # Mean, var, and median of Math score by Teacher Education Level
 nyc_scores %>%
@@ -130,7 +121,6 @@ nyc_scores %>%
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -139,20 +129,13 @@ ex() %>%
                       missing_msg = "Be sure to use `group_by()` and `summarise()` to find the mean, variance, and median Math score by Teacher_Education_Level.")
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 40 
-key: 9a8df09bae   
+type: NormalExercise
+key: 9a8df09bae
+xp: 40
 ```
-
-
-
-
 
 `@instructions`
 Find the mean, variance, and median of `Average_Score_SAT_Math` using `dplyr` EDA methods by both `Borough` and `Teacher_Education_Level`.
@@ -160,8 +143,12 @@ Find the mean, variance, and median of `Average_Score_SAT_Math` using `dplyr` ED
 `@hint`
 You can group by two variables by entering them into `group_by()` in the desired order.
 
-`@solution`
+`@sample_code`
+```{r}
 
+```
+
+`@solution`
 ```{r}
 # Mean, var, and median of Math score by both
 nyc_scores %>%
@@ -172,7 +159,6 @@ nyc_scores %>%
 ```
 
 `@sct`
-
 ```{r}
 ex() %>%
     check_output_expr(expr = "nyc_scores %>% group_by(Borough, Teacher_Education_Level) %>% 
@@ -182,19 +168,17 @@ ex() %>%
 success_msg("Great job! Now that we've examined the data, we can move on to cleaning it, the next important step before analysis.")
 ```
 
-
 ---
 
 ## Dealing with Missing Test Scores
 
 ```yaml
-type: TabExercise 
+type: TabExercise
+key: 37fd8186e2
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 37fd8186e2   
 ```
-
 
 If we want to use SAT scores as our outcome, we need to examine their missingness. First, look at the pattern of missingness using `md.pattern()` from the `mice` package. There are 60 scores missing in each of the scores. There are many R packages which help with more advanced forms of imputation, such as `MICE`, `Amelia`, `mi`, and more. We will use the `simputation` and`impute_median()` as we did previously. 
   
@@ -202,9 +186,7 @@ Create a new dataset, `nyc_scores_2` by imputing Math score by Borough. A note: 
 
 `mice`, `simputation`, and `dplyr` have been loaded for you.
 
-
 `@pre_exercise_code`
-
 ```{r}
 #load for students
 library(mice)
@@ -216,25 +198,17 @@ nyc_scores <- read.csv("https://assets.datacamp.com/production/repositories/1793
 ```
 
 `@sample_code`
-
 ```{r}
 
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 25 
-key: 37fd8186e21   
+type: NormalExercise
+key: 37fd8186e21
+xp: 25
 ```
-
-
-
-
 
 `@instructions`
 - Examine the missingness of `nyc_scores` with `md.pattern()`.
@@ -243,21 +217,18 @@ key: 37fd8186e21
 - The only input the `md_pattern()` should be the dataset name.
 
 `@sample_code`
-
 ```{r}
 # Examine missingness with md.pattern()
 ___
 ```
 
 `@solution`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -265,20 +236,13 @@ ex() %>%
                       missing_msg = "Be sure to use `md.pattern()` on `nyc_scores` to examine missingness of the variables in the dataset.")
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 25 
-key: 37fd8186e22   
+type: NormalExercise
+key: 37fd8186e22
+xp: 25
 ```
-
-
-
-
 
 `@instructions`
 Create `nyc_scores_2` by imputing the Math score by Borough (we're only using Math in our experiments.)
@@ -287,7 +251,6 @@ Create `nyc_scores_2` by imputing the Math score by Borough (we're only using Ma
 The formula input to `impute.median()` should resemble: `variable_to_impute ~ variable_to_impute_by`.
 
 `@sample_code`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -297,7 +260,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -307,7 +269,6 @@ nyc_scores_2 <- impute_median(nyc_scores, Average_Score_SAT_Math ~ Borough)
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -348,20 +309,13 @@ check_correct({
 })
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 25 
-key: 37fd8186e23   
+type: NormalExercise
+key: 37fd8186e23
+xp: 25
 ```
-
-
-
-
 
 `@instructions`
 Convert `nyc_scores_2$Average_Score_SAT_Math` to numeric.
@@ -370,7 +324,6 @@ Convert `nyc_scores_2$Average_Score_SAT_Math` to numeric.
 To convert a variable to numeric, use `as.numeric()`.h
 
 `@sample_code`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -383,7 +336,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -396,7 +348,6 @@ nyc_scores_2$Average_Score_SAT_Math <- as.numeric(nyc_scores_2$Average_Score_SAT
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -445,20 +396,13 @@ ex() %>%
                 append = FALSE)
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 25 
-key: 37fd8186e24   
+type: NormalExercise
+key: 37fd8186e24
+xp: 25
 ```
-
-
-
-
 
 `@instructions`
 Use `dplyr` to examine the median and mean of math score before and after imputation.
@@ -467,7 +411,6 @@ Use `dplyr` to examine the median and mean of math score before and after imputa
 You should use `group_by()` then `summarise()` from `dplyr`, in that order.
 
 `@sample_code`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -484,7 +427,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Examine missingness with md.pattern()
 md.pattern(nyc_scores)
@@ -501,7 +443,6 @@ nyc_scores_2 %>% group_by(Borough) %>% summarise(median = median(Average_Score_S
 ```
 
 `@sct`
-
 ```{r}
 #Check for output in the console
 ex() %>%
@@ -562,24 +503,21 @@ ex() %>%
 success_msg("Nice job! Did the median scores change before and after imputation? (Hint: they shouldn't have changed by much, but rounding may have offset them by an integer or two.)")
 ```
 
-
 ---
 
 ## Drawing Latin Squares with agricolae
 
 ```yaml
-type: NormalExercise 
+type: NormalExercise
+key: ee659294e3
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: ee659294e3   
 ```
-
 
 We return, once again, to the `agricolae` package to examine what a Latin Square design can look like.
 
 Look at the help page for `design.lsd()` by typing `?design.lsd` in the console before designing your Latin Square experiment.
-
 
 `@instructions`
 * Load the `agricolae` package.
@@ -588,8 +526,12 @@ Look at the help page for `design.lsd()` by typing `?design.lsd` in the console 
 `@hint`
 There are no other inputs besides those listed in the instructions required for `design.lsd()`.
 
-`@sample_code`
+`@pre_exercise_code`
+```{python}
 
+```
+
+`@sample_code`
 ```{r}
 # Load agricolae
 ___
@@ -600,7 +542,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Load agricolae
 library(agricolae)
@@ -611,7 +552,6 @@ my_design_lsd$sketch
 ```
 
 `@sct`
-
 ```{r}
 #Test for library call
 test_library_function(package = "agricolae", 
@@ -645,12 +585,11 @@ success_msg("Perhaps you're thinking to yourself 'This looks a lot like a RCBD'.
 ## Latin Square with NYC SAT Scores
 
 ```yaml
-type: TabExercise 
+type: TabExercise
+key: eb602251af
 lang: r
-xp: 100 
-key: eb602251af   
+xp: 100
 ```
-
 
 To execute a Latin Square design on this data, suppose we want to know the effect of of our tutoring program, which includes one-on-one tutoring, two small groups, and an in and after school SAT prep class. A new dataset `nyc_scores_ls` is available that represents this experiment. Feel free to explore the dataset in the console.
 
@@ -660,9 +599,7 @@ _________
 
 **At the 0.05 level, do we have evidence to believe the tutoring program has an effect on math SAT scores, when blocked by `Borough` and `Teacher_Education_Level`?**
 
-
 `@pre_exercise_code`
-
 ```{r}
 #libraries for me
 library(dplyr)
@@ -696,25 +633,17 @@ library(broom)
 ```
 
 `@sample_code`
-
 ```{r}
 
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 50 
-key: 4835457549   
+type: NormalExercise
+key: 4835457549
+xp: 50
 ```
-
-
-
-
 
 `@instructions`
 * Use `lm()` to test the changes in `Average_Score_SAT_Math` using `nyc_scores_ls`.
@@ -725,7 +654,6 @@ key: 4835457549
 * The formula for `lm()` should look something like: `outcome ~ treatment + block1 + block2`.
 
 `@sample_code`
-
 ```{r}
 # Build nyc_scores_ls_lm
 nyc_scores_ls_lm <- ___(___ ~ Tutoring_Program + Borough + Teacher_Education_Level,
@@ -739,7 +667,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Build nyc_scores_ls_lm
 nyc_scores_ls_lm <- lm(Average_Score_SAT_Math ~ Tutoring_Program + Borough + Teacher_Education_Level,
@@ -753,7 +680,6 @@ anova(nyc_scores_ls_lm)
 ```
 
 `@sct`
-
 ```{r}
 #Checks nyc_scores_ls_lm object, then (if object is wrong) checks function(s) that create object
 ex() %>% check_correct(
@@ -779,43 +705,25 @@ ex() %>%
                       missing_msg = "Be sure to use `anova()` on `nyc_scores_ls_lm` to view the results.")
 ```
 
-
 ***
 
-
-
 ```yaml
-type: MultipleChoiceExercise 
-xp: 50 
-key: fdabd3ddbe   
+type: MultipleChoiceExercise
+key: fdabd3ddbe
+xp: 50
 ```
 
+`@question`
 
 
-
-
-`@instructions`
+`@possible_answers`
 * Nope! Given the p-value, we have no reason to reject the null hypothesis.
 * Yes! Given the p-value, we have reason to believe that the tutoring program had an effect on the Math score.
 
 `@hint`
 * Be sure you're looking at the p-value for `Tutoring_Program`.
 
-`@sample_code`
-
-```{r}
-# Build nyc_scores_ls_lm
-nyc_scores_ls_lm <- lm(Average_Score_SAT_Math ~ Tutoring_Program + Borough + Teacher_Education_Level, data=nyc_scores_ls)
-
-# Tidy the results with broom
-tidy(nyc_scores_ls_lm)
-
-# Examine the results with anova
-anova(nyc_scores_ls_lm)
-```
-
 `@sct`
-
 ```{r}
 #feedback/success messages for each possible answer; provided by instructor
 msg1 <- "Great! Because the p-value is greater than 0.05, statisticians usually say we fail to reject the null hypothesis, which was that the `Tutoring_Program` has no effect on Math scores."
@@ -827,38 +735,36 @@ test_mc(correct = 1, feedback_msgs = c(msg1, msg2))
 success_msg("Excellent! It seems that when we block for `Borough` of the school and `Teacher_Education_Level`, our `Tutoring_Program` isn't having a statistically significant effect on the Math SAT score.")
 ```
 
-
 ---
 
 ## Graeco-Latin Squares
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 92797f11d9
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 92797f11d9   
 ```
 
 `@projector_key`
 eea381c3b1efa8ceba34c68871ad3833
+
 ---
 
 ## NYC SAT Scores Data Viz
 
 ```yaml
-type: NormalExercise 
+type: NormalExercise
+key: dcab1a283e
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: dcab1a283e   
 ```
-
 
 In the last lesson, when discussing Latin Squares, we did mostly numerical EDA in the form of looking at means, variances, and medians of the math scores. As we've covered, another crucial part of the EDA is data visualization, as it often helps in spotting outliers plus gives you a visual representation of the distribution of your variables. 
 
 `ggplot2` has been loaded for you and the `nyc_scores` dataset is available. Create and examine the requested boxplot. How do the medians differ by Borough? How many outliers are present, and where are they mostly present?
-
 
 `@instructions`
 * Create a boxplot of Math SAT scores by `Borough`.
@@ -871,7 +777,6 @@ In the last lesson, when discussing Latin Squares, we did mostly numerical EDA i
 * Don't use `labs()` to create any of the titles or labels!
 
 `@pre_exercise_code`
-
 ```{r}
 #library for pre_ex_code
 library(simputation)
@@ -897,14 +802,12 @@ library(ggplot2)
 ```
 
 `@sample_code`
-
 ```{r}
 # Create a boxplot of Math scores by Borough, with a title and x/y axis labels
 ___
 ```
 
 `@solution`
-
 ```{r}
 # Create a boxplot of Math scores by Borough, with a title and x/y axis labels
 ggplot(nyc_scores, aes(Borough, Average_Score_SAT_Math)) +
@@ -915,7 +818,6 @@ ggplot(nyc_scores, aes(Borough, Average_Score_SAT_Math)) +
 ```
 
 `@sct`
-
 ```{r}
 #checks ggplot() logic
 ex() %>% {
@@ -939,16 +841,14 @@ success_msg("Beautiful! It's interesting to see the different distribution of sc
 ## Drawing Graeco-Latin Squares with agricolae
 
 ```yaml
-type: NormalExercise 
+type: NormalExercise
+key: c5c7b99395
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: c5c7b99395   
 ```
 
-
 As we've seen, `agricolae` provides us the ability to draw all of the experimental designs we've used so far, and they can also draw Graeco-Latin squares. One difference in the input to `design.graeco()` that we haven't seen before is that we'll need to input 2 vectors, `trt1` and `trt2`, which must be of equal length. You can think of `trt1` as your actual treatment and `trt2` as one of your blocking factors.
-
 
 `@instructions`
 * `agricolae` has been loaded for you.
@@ -962,13 +862,11 @@ As we've seen, `agricolae` provides us the ability to draw all of the experiment
 * You can access the `parameters` and `sketch` using, for e.g., `my_design$sketch`.
 
 `@pre_exercise_code`
-
 ```{r}
 library(agricolae)
 ```
 
 `@sample_code`
-
 ```{r}
 # Create trt1 and trt2
 ___
@@ -983,7 +881,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Create trt1 and trt2
 trt1 <- LETTERS[1:5]
@@ -998,7 +895,6 @@ my_graeco_design$sketch
 ```
 
 `@sct`
-
 ```{r}
 #check trt1
 ex() %>% check_object(name = "trt1") %>% check_equal()
@@ -1038,13 +934,12 @@ success_msg("Superb! You can see that this time the sketch object includes your 
 ## Graeco-Latin Square with NYC SAT Scores
 
 ```yaml
-type: TabExercise 
+type: TabExercise
+key: 453fa151eb
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 453fa151eb   
 ```
-
 
 Recall that our Latin Square exercise in this chapter tested the effect of our tutoring program, blocked by `Borough` and `Teacher_Education_Level`. 
 
@@ -1054,9 +949,7 @@ _________
 
 **At the 0.05 level, do we have evidence to believe the tutoring program has an effect on math SAT scores, when blocked by `Borough`, `Teacher_Education_Level`, and `Homework_Type`?**
 
-
 `@pre_exercise_code`
-
 ```{r}
 #libraries for me
 library(dplyr)
@@ -1108,19 +1001,18 @@ nyc_scores_gls$Homework_Type <-  c(c(b, c, a, e, d),
 library(broom)
 ```
 
-***
+`@sample_code`
+```{python}
 
-
-
-```yaml
-type: NormalExercise 
-xp: 50 
-key: ca8048832b   
 ```
 
+***
 
-
-
+```yaml
+type: NormalExercise
+key: ca8048832b
+xp: 50
+```
 
 `@instructions`
 * Use `lm()` to test the changes in `Average_Score_SAT_Math` using the `nyc_scores_gls` data.
@@ -1131,7 +1023,6 @@ key: ca8048832b
 * The formula for `lm()` should look something like: `outcome ~ treatment + block1 + block2 + block3`.
 
 `@sample_code`
-
 ```{r}
 # Build nyc_scores_gls_lm
 nyc_scores_gls_lm <- ___(___ ~ Tutoring_Program + Borough + Teacher_Education_Level + Homework_Type,
@@ -1145,7 +1036,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Build nyc_scores_gls_lm
 nyc_scores_gls_lm <- lm(Average_Score_SAT_Math ~ Tutoring_Program + Borough + Teacher_Education_Level + Homework_Type,
@@ -1159,7 +1049,6 @@ anova(nyc_scores_gls_lm)
 ```
 
 `@sct`
-
 ```{r}
 #Checks nyc_scores_gls_lm object, then (if object is wrong) checks function(s) that create object
 check_correct({
@@ -1205,44 +1094,25 @@ ex() %>%
                       missing_msg = "Be sure to use `anova()` on `nyc_scores_gls_lm` to view the results.")
 ```
 
-
 ***
 
-
-
 ```yaml
-type: MultipleChoiceExercise 
-xp: 50 
-key: 65f37599eb   
+type: MultipleChoiceExercise
+key: 65f37599eb
+xp: 50
 ```
 
+`@question`
 
 
-
-
-`@instructions`
+`@possible_answers`
 * Nope! Given the p-value, we have no reason to reject the null hypothesis.
 * Yes! Given the p-value, we have reason to believe that the tutoring program had an effect on the Math score.
 
 `@hint`
 * Be sure you're looking at the p-value for `Tutoring_Program`.
 
-`@sample_code`
-
-```{r}
-# Build nyc_scores_gls_lm
-nyc_scores_gls_lm <- lm(Average_Score_SAT_Math ~ Tutoring_Program + Borough + Teacher_Education_Level + Homework_Type,
-                        data=nyc_scores_gls)
-
-# Tidy the results with broom
-tidy(nyc_scores_gls_lm)
-
-# Examine the results with anova
-anova(nyc_scores_gls_lm)
-```
-
 `@sct`
-
 ```{r}
 #feedback/success messages for each possible answer; provided by instructor
 msg1 <- "Great! Because the p-value is greater than 0.05, statisticians usually say we fail to reject the null hypothesis, which was that the `Tutoring_Program` has no effect on Math scores."
@@ -1256,40 +1126,37 @@ success_msg("Excellent! It seems that when we block for `Borough` of the school 
 success_msg("Bravo! It seems that here, when blocked out by all the other factors, our Tutoring program has no effect on the Math score.")
 ```
 
-
 ---
 
 ## Factorial Experiments
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 89de737cf3
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 89de737cf3   
 ```
 
 `@projector_key`
 eb47cc481394422db9d5abddf5971e70
+
 ---
 
 ## NYC SAT Scores Factorial EDA
 
 ```yaml
-type: BulletExercise 
+type: BulletExercise
+key: 8f44110ac7
 lang: r
-xp: 100 
-key: 8f44110ac7   
+xp: 100
 ```
-
 
 Let's do some more EDA before we dive into analysis of our factorial experiment. 
 
 Here, we plan to test the effect of `Percent_Black_HL`, `Percent_Tested_HL`, and `Tutoring_Program` on our outcome, `Average_Score_SAT_Math`. The `HL` stands for high-low, where a 1 indicates less than 50% Black students or overall students tested at a school, and a 2 indicates greater than 50% of both. We should build a boxplot of each factor vs. the outcome to have an idea of which ones have a difference in median by factor level (though ultimately, mean difference is what's tested.)
 
-
 `@pre_exercise_code`
-
 ```{r}
 #load libraries
 library(dplyr)
@@ -1324,19 +1191,18 @@ nyc_scores$Percent_Black_HL <- as.factor(nyc_scores$Percent_Black_HL)
 library(ggplot2)
 ```
 
-***
+`@sample_code`
+```{python}
 
-
-
-```yaml
-type: NormalExercise 
-xp: 40 
-key: bd275d7493   
 ```
 
+***
 
-
-
+```yaml
+type: NormalExercise
+key: bd275d7493
+xp: 40
+```
 
 `@instructions`
 Load `ggplot2`. Create a boxplot of the outcome versus `Tutoring_Program`.
@@ -1345,7 +1211,6 @@ Load `ggplot2`. Create a boxplot of the outcome versus `Tutoring_Program`.
 For `geom_boxplot()`, the associated `aes()` takes an `x` and `y` argument. `x` should be your factor variable and `y` the outcome.
 
 `@sample_code`
-
 ```{r}
 # Load ggplot2
 ___
@@ -1357,7 +1222,6 @@ ggplot(___,
 ```
 
 `@solution`
-
 ```{r}
 # Load ggplot2
 library(ggplot2)
@@ -1369,7 +1233,6 @@ ggplot(nyc_scores,
 ```
 
 `@sct`
-
 ```{r}
 #Test for library call
 test_library_function(package = "ggplot2", 
@@ -1409,20 +1272,13 @@ ex() %>% {
 }
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 30 
-key: dfb7d1f6ff   
+type: NormalExercise
+key: dfb7d1f6ff
+xp: 30
 ```
-
-
-
-
 
 `@instructions`
 Using `ggplot2`, create a boxplot of the outcome versus `Percent_Black_HL`.
@@ -1431,7 +1287,6 @@ Using `ggplot2`, create a boxplot of the outcome versus `Percent_Black_HL`.
 For `geom_boxplot()`, the associated `aes()` takes an `x` and `y` argument. `x` should be your group variable and `y` the outcome.
 
 `@sample_code`
-
 ```{r}
 # Build the boxplot for the percent black vs. Math SAT score
 ggplot(___,
@@ -1440,7 +1295,6 @@ ggplot(___,
 ```
 
 `@solution`
-
 ```{r}
 # Build the boxplot for percent black vs. Math SAT score
 ggplot(nyc_scores,
@@ -1449,7 +1303,6 @@ ggplot(nyc_scores,
 ```
 
 `@sct`
-
 ```{r}
 #checks ggplot() logic
 ex() %>% {
@@ -1484,20 +1337,13 @@ ex() %>% {
 }
 ```
 
-
 ***
 
-
-
 ```yaml
-type: NormalExercise 
-xp: 30 
-key: e23fca2d71   
+type: NormalExercise
+key: e23fca2d71
+xp: 30
 ```
-
-
-
-
 
 `@instructions`
 Using `ggplot2`, create a boxplot of the outcome versus `Percent_Tested_HL`.
@@ -1506,7 +1352,6 @@ Using `ggplot2`, create a boxplot of the outcome versus `Percent_Tested_HL`.
 For `geom_boxplot()`, the associated `aes()` takes an `x` and `y` argument. `x` should be your group variable and `y` the outcome.
 
 `@sample_code`
-
 ```{r}
 # Build the boxplot for percent tested vs. Math SAT score
 ggplot(___,
@@ -1515,7 +1360,6 @@ ggplot(___,
 ```
 
 `@solution`
-
 ```{r}
 # Build the boxplot for percent tested vs. Math SAT score
 ggplot(nyc_scores,
@@ -1524,7 +1368,6 @@ ggplot(nyc_scores,
 ```
 
 `@sct`
-
 ```{r}
 #checks ggplot() logic
 ex() %>% {
@@ -1561,24 +1404,21 @@ ex() %>% {
 success_msg("Excellent! Now, let's move on to the analysis of these factors on the score.")
 ```
 
-
 ---
 
 ## Factorial Experiment with NYC SAT Scores
 
 ```yaml
-type: NormalExercise 
+type: NormalExercise
+key: 7eee45a518
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: 7eee45a518   
 ```
-
 
 Now we want to examine the effect of tutoring programs on the NYC schools' SAT Math score. As noted in the last exercise: the variable `Tutoring_Program` is simply `yes` or `no`, depending on if a school got a tutoring program implemented. For `Percent_Black_HL` and `Percent_Tested_HL`, `HL` stands for high/low, a 1 indicates less than 50% Black students or overall students tested, and a 2 indicates greater than 50% of both.
 
 Remember that because we intend to test all of the possible combinations of factor levels, we need to write the formula like: `outcome ~ factor1 * factor2 * factor3`.
-
 
 `@instructions`
 * Use `aov()` to create a model to test how `Percent_Tested_HL`, `Percent_Black_HL`, and `Tutoring_Program` affect the outcome `Average_Score_SAT_Math`. Save as a model object `nyc_scores_factorial` and examine the outcome with `tidy()`.
@@ -1587,7 +1427,6 @@ Remember that because we intend to test all of the possible combinations of fact
 Your formula should look like: `Average_Score_SAT_Math ~ Percent_Tested_HL * Percent_Black_HL * Tutoring_Program`.
 
 `@pre_exercise_code`
-
 ```{r}
 library(dplyr)
 nyc_scores <- read.csv("https://assets.datacamp.com/production/repositories/1793/datasets/6eee2fcc47c8c8dbb2e9d4670cf2eabeda52b705/nyc_scores.csv")
@@ -1605,7 +1444,6 @@ library(broom)
 ```
 
 `@sample_code`
-
 ```{r}
 # Create nyc_scores_factorial and examine the results
 ___
@@ -1613,7 +1451,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Create nyc_scores_factorial and examine the results
 nyc_scores_factorial <- aov(Average_Score_SAT_Math ~ Percent_Tested_HL * Percent_Black_HL * Tutoring_Program, data = nyc_scores)
@@ -1621,7 +1458,6 @@ tidy(nyc_scores_factorial)
 ```
 
 `@sct`
-
 ```{r}
 #Checks nyc_scores_factorial object, then (if object is wrong) checks function(s) that create object
 check_correct({
@@ -1669,18 +1505,16 @@ success_msg("Whoo! As is best practice, let's go to the next exercise and do som
 ## Evaluating the NYC SAT Scores Factorial Model
 
 ```yaml
-type: NormalExercise 
+type: NormalExercise
+key: aae74b9c8b
 lang: r
-xp: 100 
+xp: 100
 skills: 1
-key: aae74b9c8b   
 ```
-
 
 We've built our model, so we know what's next: model checking! We need to examine both if our outcome and our model residuals are normally distributed. We'll check the normality assumption using `shapiro.test()`. A low p-value means we can reject the null hypothesis that the sample came from a normally distributed population.
 
 Let's carry out the requisite model checks for our 2^k factorial model, `nyc_scores_factorial`, which as been loaded for you.
-
 
 `@instructions`
 * Test the outcome `Average_Score_SAT_Math` for normality using `shapiro.test()`.
@@ -1690,7 +1524,6 @@ Let's carry out the requisite model checks for our 2^k factorial model, `nyc_sco
 * The only argument to `shapiro.test()` should be the outcome from the `nyc_scores` dataset.
 
 `@pre_exercise_code`
-
 ```{r}
 #libraries
 library(dplyr)
@@ -1716,7 +1549,6 @@ library(broom)
 ```
 
 `@sample_code`
-
 ```{r}
 # Use shapiro.test() to test the outcome
 ___
@@ -1727,7 +1559,6 @@ ___
 ```
 
 `@solution`
-
 ```{r}
 # Use shapiro.test() to test the outcome
 shapiro.test(nyc_scores$Average_Score_SAT_Math)
@@ -1738,7 +1569,6 @@ plot(nyc_scores_factorial)
 ```
 
 `@sct`
-
 ```{r}
 #check shapiro.test() output
 ex() %>%
@@ -1764,11 +1594,11 @@ success_msg("Brilliant! The model appears to be fairly well fit, though our evid
 ## What's next in Experimental Design
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 77f35681ef
 lang: r
-xp: 50 
+xp: 50
 skills: 1
-key: 77f35681ef   
 ```
 
 `@projector_key`
