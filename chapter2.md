@@ -1,39 +1,38 @@
 ---
-  title: "Building interactive apps with Bokeh"
-  description: "Bokeh server applications let you connect all of the powerful Python libraries for analytics and data science, such as NumPy and Pandas, to rich interactive Bokeh visualizations. Learn about Bokeh's built-in widgets,  how to add them to Bokeh documents alongside plots, and how to connect everything to real python code using the Bokeh server."
-  attachments: 
-    slides_link: "https://s3.amazonaws.com/assets.datacamp.com/production/course_2244/slides/ch4_slides.pdf"
+title: 'Building interactive apps with Bokeh'
+description: 'Bokeh server applications let you connect all of the powerful Python libraries for analytics and data science, such as NumPy and Pandas, to rich interactive Bokeh visualizations. Learn about Bokeh''s built-in widgets,  how to add them to Bokeh documents alongside plots, and how to connect everything to real python code using the Bokeh server.'
+attachments:
+    slides_link: 'https://s3.amazonaws.com/assets.datacamp.com/production/course_2244/slides/ch4_slides.pdf'
 ---
 
 ## Introducing the Bokeh Server
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 70223a8372
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 70223a8372 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v6/hls-ch4_1.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v6/hls-ch4_1.master.m3u8
 ```
+
 
 ---
 
 ## Understanding Bokeh apps
 
 ```yaml
-type: PureMultipleChoiceExercise 
+type: PureMultipleChoiceExercise
+key: 5f17d13f27
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 5f17d13f27   
 ```
-
 
 The main purpose of the Bokeh server is to synchronize python objects with web applications in a browser, so that rich, interactive data applications can be connected to powerful PyData libraries such as NumPy, SciPy, Pandas, and scikit-learn. 
 
 What sort of properties can the Bokeh server automatically keep in sync?
-
 
 `@hint`
 Bokeh server is not limited to synchronizing only data sources or glyph properties.
@@ -53,13 +52,12 @@ Bokeh server is not limited to synchronizing only data sources or glyph properti
 ## Using the current document
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 23b2753b9e
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 23b2753b9e   
 ```
-
 
 Let's get started with building an interactive Bokeh app. This typically begins with importing the `curdoc`, or "current document", function from
 `bokeh.io`. This current document will eventually hold all the plots, controls, and layouts that you create. Your job in this exercise is to use this function to add a single plot to your application.
@@ -68,7 +66,6 @@ In the video, Bryan described the process for running a Bokeh app using the `bok
 
 Remember, as in the previous chapters, that there are different options available for you to interact with your plots, and as before,
 you may have to scroll down to view the lower portion of the plots.
-
 
 `@instructions`
 - Import `curdoc` from `bokeh.io` and `figure` from `bokeh.plotting`.
@@ -83,13 +80,11 @@ you may have to scroll down to view the lower portion of the plots.
 - To add the plot to the current document, `plot` has to be passed in as an argument to `add_root()` in `curdoc().add_root()`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 ```
 
 `@sample_code`
-
 ```{python}
 # Perform necessary imports
 from ____ import ____
@@ -106,7 +101,6 @@ ____
 ```
 
 `@solution`
-
 ```{python}
 # Perform necessary imports
 from bokeh.plotting import figure
@@ -123,7 +117,6 @@ curdoc().add_root(plot)
 ```
 
 `@sct`
-
 ```{python}
 test_import('bokeh.plotting.figure',
             not_imported_msg='Did you import `figure` from `bokeh.plotting`?',
@@ -153,20 +146,18 @@ success_msg("Great work! In the next exercise, you'll practice adding a single s
 ## Add a single slider
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: b5ac403fd2
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: b5ac403fd2   
 ```
-
 
 In the previous exercise, you added a single plot to the "current document" of your application. In this exercise, you'll practice adding a layout to your current document. 
 
 Your job here is to create a single slider, use it to create a widgetbox layout, and then add this layout to the current document. 
 
 The slider you create here cannot be used for much, but in the later exercises, you'll use it to update your plots!
-
 
 `@instructions`
 - Import `curdoc` from `bokeh.io`, `widgetbox` from `bokeh.layouts`, and `Slider` from `bokeh.models`.
@@ -181,13 +172,11 @@ The slider you create here cannot be used for much, but in the later exercises, 
 - To add the layout to the current document, `layout` has to be passed in as an argument to `add_root()` in `curdoc().add_root()`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 ```
 
 `@sample_code`
-
 ```{python}
 # Perform the necessary imports
 from ____ import ____
@@ -205,7 +194,6 @@ ____
 ```
 
 `@solution`
-
 ```{python}
 # Perform the necessary imports
 from bokeh.io import curdoc
@@ -223,7 +211,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 test_import('bokeh.io.curdoc',
             not_imported_msg='Did you import `curdoc` from `bokeh.io`?',
@@ -251,18 +238,16 @@ success_msg("Good job! You'll build on this in the next exercise by adding anoth
 ## Multiple sliders in one document
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 96f949ebfb
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 96f949ebfb   
 ```
-
 
 Having added a single slider in a widgetbox layout to your current document, you'll now add multiple sliders into the current document.
 
 Your job in this exercise is to create two sliders, add them to a widgetbox layout, and then add the layout into the current document.
-
 
 `@instructions`
 - Create the first slider, `slider1`, using the `Slider()` function. Give it a title of `'slider1'`. Have it `start` at `0`, `end` at `10`, with a `step` of `0.1` and initial `value` of `2`.
@@ -277,13 +262,11 @@ Your job in this exercise is to create two sliders, add them to a widgetbox layo
 - The layout has already been added to the current document. So hit 'Submit Answer' to view the two sliders!
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 ```
 
 `@sample_code`
-
 ```{python}
 # Perform necessary imports
 from bokeh.io import curdoc
@@ -304,7 +287,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Perform necessary imports
 from bokeh.io import curdoc
@@ -325,7 +307,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 test_object("slider1", do_eval=False)
 test_function("bokeh.models.Slider", index=1)
@@ -371,32 +352,31 @@ success_msg("Excellent! The next step now is to learn how to connect these slide
 ## Connecting sliders to plots
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 022c052521
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 022c052521 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_2.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_2.master.m3u8
 ```
+
 
 ---
 
 ## Adding callbacks to sliders
 
 ```yaml
-type: PureMultipleChoiceExercise 
+type: PureMultipleChoiceExercise
+key: e466b9e3f4
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: e466b9e3f4   
 ```
-
 
 Callbacks are functions that a user can define, like `def callback(attr, old, new)`, that can be called automatically when some property of a Bokeh object (e.g., the `value` of a `Slider`) changes. 
 
 How are callbacks added for the `value` property of `Slider` objects?
-
 
 `@hint`
 A `Slider` does not have a `callback` method or an `update` property.
@@ -416,13 +396,12 @@ A `Slider` does not have a `callback` method or an `update` property.
 ## How to combine Bokeh models into layouts
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 38503d044b
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 38503d044b   
 ```
-
 
 Let's begin making a Bokeh application that has a simple slider and plot, that also updates the plot based on the slider. 
 
@@ -431,7 +410,6 @@ In this exercise, your job is to first explicitly create a ColumnDataSource. You
 After you are done, notice how in the figure you generate, the slider will not actually update the plot, because a widget callback has not been defined. You'll learn how to update the plot using widget callbacks in the next exercise.
 
 All the necessary modules have been imported for you. The plot is available in the workspace as `plot`, and the slider is available as `slider`.
-
 
 `@instructions`
 - Create a ColumnDataSource called `source`. Explicitly specify the `data` parameter of `ColumnDataSource()` with `{'x': x, 'y': y}`.
@@ -444,7 +422,6 @@ All the necessary modules have been imported for you. The plot is available in t
 - You can create the column layout using the `column()` function and passing in the arguments `widgetbox(slider)` and `plot`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 import numpy as np
@@ -462,7 +439,6 @@ slider = Slider(title="scale", start=1, end=10, step=1, value=1)
 ```
 
 `@sample_code`
-
 ```{python}
 # Create ColumnDataSource: source
 source = ____
@@ -478,7 +454,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Create ColumnDataSource: source
 source = ColumnDataSource(data={'x': x, 'y': y})
@@ -494,7 +469,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 test_object("source", do_eval=False)
 test_function("bokeh.models.ColumnDataSource")
@@ -534,20 +508,18 @@ success_msg("Great work! Since a widget callback hasn't been defined here, the s
 ## Learn about widget callbacks
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 645d4dfbaf
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 645d4dfbaf   
 ```
-
 
 You'll now learn how to use widget callbacks to update the state of a Bokeh application, and in turn, the data that is presented to the user. 
 
 Your job in this exercise is to use the slider's `on_change()` function to update the plot's data from the previous example. NumPy's `sin()` function will be used to update the y-axis data of the plot.
 
 Now that you have added a widget callback, notice how as you move the slider of your app, the figure also updates!
-
 
 `@instructions`
 - Define a callback function `callback` with the parameters `attr`, `old`, `new`.
@@ -564,7 +536,6 @@ Now that you have added a widget callback, notice how as you move the slider of 
 - To attach the callback, you can use `slider.on_change()` with the arguments `'value'` and `callback`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 import numpy as np
@@ -583,7 +554,6 @@ plot.line('x', 'y', source=source)
 ```
 
 `@sample_code`
-
 ```{python}
 # Define a callback function: callback
 ____ ____(____, ____, ____):
@@ -606,7 +576,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Define a callback function: callback
 def callback(attr, old, new):
@@ -629,7 +598,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 # MC-note: converter appears to be working as expected
 def my_converter(source):
@@ -683,27 +651,27 @@ success_msg("Fantastic! Now that you have added the callback, notice how the fig
 ## Updating plots from dropdowns
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 3ba1cc526c
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 3ba1cc526c 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_3.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_3.master.m3u8
 ```
+
 
 ---
 
 ## Updating data sources from dropdown callbacks
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 53952c3d79
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 53952c3d79   
 ```
-
 
 You'll now learn to update the plot's data using a drop down menu instead of a slider. This would allow users to do things like select between different data sources to view. 
 
@@ -711,7 +679,6 @@ The ColumnDataSource `source` has been created for you along with the plot.
 Your job in this exercise is to add a drop down menu to update the plot's data.
 
 All necessary modules have been imported for you.
-
 
 `@instructions`
 - Define a callback function called `update_plot` with the parameters `attr`, `old`, `new`.
@@ -726,7 +693,6 @@ All necessary modules have been imported for you.
 - To attach the callback, you can use `select.on_change()` with the arguments `'value'` and `update_plot`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 import pandas as pd
@@ -748,7 +714,6 @@ from bokeh.layouts import row
 ```
 
 `@sample_code`
-
 ```{python}
 # Perform necessary imports
 from bokeh.models import ColumnDataSource, Select
@@ -792,7 +757,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Perform necessary imports
 from bokeh.models import ColumnDataSource, Select
@@ -836,7 +800,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 import copy
 test_function("bokeh.models.ColumnDataSource", do_eval=False)
@@ -914,20 +877,18 @@ success_msg("Great work! Dropdowns can add a lot of interactivity to figures. In
 ## Synchronize two dropdowns
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 069eeeafe2
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 069eeeafe2   
 ```
-
 
 Here, you'll practice using a dropdown callback to update another dropdown's options. This will allow you to customize your applications even further and is a powerful addition to your toolbox. 
 
 Your job in this exercise is to create two dropdown select widgets and then define a callback such that one dropdown is used to update the other dropdown.
 
 All modules necessary have been imported.
-
 
 `@instructions`
 - Create `select1`, the first dropdown select widget. Specify the parameters `title`, `options`, and `value`.
@@ -943,7 +904,6 @@ All modules necessary have been imported.
 - To attach the callback, you can use `select1.on_change()` with the arguments `'value'` and `callback`.
 
 `@pre_exercise_code`
-
 ```{python}
 # Perform necessary imports
 from bokeh.plotting import figure, curdoc
@@ -952,7 +912,6 @@ from bokeh.models import ColumnDataSource, Select
 ```
 
 `@sample_code`
-
 ```{python}
 # Create two dropdown Select widgets: select1, select2
 select1 = Select(____='First', ____=['A', 'B'], ____='A')
@@ -983,7 +942,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Create two dropdown Select widgets: select1, select2
 select1 = Select(title='First', options=['A', 'B'], value='A')
@@ -1014,7 +972,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 test_object("select1", do_eval=False)
 test_function("bokeh.models.Select")
@@ -1079,34 +1036,33 @@ success_msg("Great work! Play around by flipping the first dropdown option betwe
 ## Buttons
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 913779f5ef
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 913779f5ef 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_4.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v3/hls-ch4_4.master.m3u8
 ```
+
 
 ---
 
 ## Button widgets
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: 1d36760131
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: 1d36760131   
 ```
-
 
 It's time to practice adding buttons to your interactive visualizations. Your job in this exercise is to create a button and use its `on_click()` method to update a plot. 
 
 All necessary modules have been imported for you. In addition, the ColumnDataSource with data `x` and `y` as well as the figure have been created for you and are available in the workspace as `source` and `plot`.
 
 When you're done, be sure to interact with the button you just added to your plot, and notice how it updates the data!
-
 
 `@instructions`
 - Create a button called `button` using the function `Button()` with the label `'Update Data'`.
@@ -1123,7 +1079,6 @@ When you're done, be sure to interact with the button you just added to your plo
 - You can add the update callback to the button using `button.on_click()` and passing in the `update` callback.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 import numpy as np
@@ -1142,7 +1097,6 @@ plot.circle('x', 'y', source=source)
 ```
 
 `@sample_code`
-
 ```{python}
 # Create a Button with label 'Update Data'
 button = ____
@@ -1165,7 +1119,6 @@ curdoc().add_root(layout)
 ```
 
 `@solution`
-
 ```{python}
 # Create a Button with label 'Update Data'
 button = Button(label='Update Data')
@@ -1188,7 +1141,6 @@ curdoc().add_root(layout)
 ```
 
 `@sct`
-
 ```{python}
 # Set converter so that ColumnDataSource can be fetched from the process properly
 set_converter(key = "bokeh.models.sources.ColumnDataSource", fundef = lambda source: dict(source.data))   
@@ -1226,20 +1178,18 @@ success_msg("Great work! Notice how clicking the button updates the data in acco
 ## Button styles
 
 ```yaml
-type: BokehServerExercise 
+type: BokehServerExercise
+key: db5dce90b0
 lang: python
-xp: 100 
+xp: 100
 skills: 2,4
-key: db5dce90b0   
 ```
-
 
 You can also get really creative with your `Button` widgets. 
 
 In this exercise, you'll practice using CheckboxGroup, RadioGroup, and Toggle to add multiple `Button` widgets with different styles.
 
 `curdoc` and `widgetbox` have already been imported for you.
-
 
 `@instructions`
 - Import `CheckboxGroup`, `RadioGroup`, `Toggle` from `bokeh.models`.
@@ -1256,7 +1206,6 @@ In this exercise, you'll practice using CheckboxGroup, RadioGroup, and Toggle to
 - To add the widgetbox layout to the current document, `widgetbox(toggle, checkbox, radio)` has to be passed in as an argument to `add_root()` in `curdoc().add_root()`.
 
 `@pre_exercise_code`
-
 ```{python}
 # pec
 
@@ -1265,7 +1214,6 @@ from bokeh.layouts import widgetbox
 ```
 
 `@sample_code`
-
 ```{python}
 # Import CheckboxGroup, RadioGroup, Toggle from bokeh.models
 
@@ -1284,7 +1232,6 @@ curdoc().add_root(____)
 ```
 
 `@solution`
-
 ```{python}
 # Import CheckboxGroup, RadioGroup, Toggle from bokeh.models
 from bokeh.models import CheckboxGroup, RadioGroup, Toggle
@@ -1303,7 +1250,6 @@ curdoc().add_root(widgetbox(toggle, checkbox, radio))
 ```
 
 `@sct`
-
 ```{python}
 test_import('bokeh.models.CheckboxGroup',
             not_imported_msg='Did you import `CheckboxGroup` from `bokeh.models`?',
@@ -1351,11 +1297,11 @@ success_msg("Great work! Toggles, CheckboxGroups, and RadioGroups allow you to a
 ## Hosting applications for wider audiences
 
 ```yaml
-type: VideoExercise 
+type: VideoExercise
+key: 5d54d699df
 lang: python
-xp: 50 
+xp: 50
 skills: 2,4
-key: 5d54d699df 
-video_link: //player.vimeo.com/video/154783078 
-video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v6/hls-ch4_5.master.m3u8 
+video_link: //player.vimeo.com/video/154783078
+video_hls: //videos.datacamp.com/transcoded/1392_Bokeh_I/v6/hls-ch4_5.master.m3u8
 ```
