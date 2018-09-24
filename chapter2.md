@@ -81,7 +81,7 @@ you may have to scroll down to view the lower portion of the plots.
 
 `@pre_exercise_code`
 ```{python}
-# pec
+# pec2
 ```
 
 `@sample_code`
